@@ -1,0 +1,15 @@
+DSB-LC-AM folder contains large carrier modulation and demodulation of a message. 
+Message signal: m(t)=5*cos(200*pi*t) + 10*cos(400*pi*t). 
+System is: x(t) = m(t) + 2*cos(2000*pi*t) 
+           z(t) = 60*x(t) x^2(t)
+If z(t) is passed through a bpf, y(t) is obtained. BPF has a gain of 1, Bandwidth = 2B = 400Hz, center frequency fc = 1kHz.
+Note: If it is passed through a dc filter as a result of demodulation, the correct result will be obtained. DC filter is missing in the code part.
+
+
+The FrequencyModulation file contains a frequency modulation and demodulation implementation. 
+Message signal: m(t) = rectpuls((t-1)/2) - rectpuls((t-3)/2);
+Carrier signal: c(t) = 5*cos(500*pi*t)
+FM sinal: y(t) = 5cos(500*pi*t + phi(t))  where phi(t) = 2*pi*kf * integral of m(t) , with kf=50.
+The demodulator consists of a differentiator, a diode (assume ideal), a low pass filter (LPF) and a capacitor for DC blocking, successively.
+
+
